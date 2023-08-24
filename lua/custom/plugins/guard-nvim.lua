@@ -1,5 +1,5 @@
 return {
-"nvimdev/guard.nvim",
+	"nvimdev/guard.nvim",
 	config = function()
 		local ft = require('guard.filetype')
 		ft('typescript,javascript,typescriptreact,javascriptreact'):fmt('prettier')
