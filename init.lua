@@ -419,6 +419,7 @@ local servers = {
   html = { filetypes = { 'html' } },
   tsserver = {},
   eslint = {},
+  svelte = {},
   tailwindcss = {},
   dockerls = {},
   terraformls = {},
