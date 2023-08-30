@@ -421,9 +421,14 @@ local servers = {
   pylsp = {},
   cssls = {},
   html = { filetypes = { 'html' } },
-  tsserver = {},
+  tsserver = {
+    single_file_support = false,
+  },
   eslint = {},
   svelte = {},
+  denols = {
+    root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', 'import_map.json'),
+  },
   tailwindcss = {},
   dockerls = {},
   terraformls = {},
@@ -471,6 +476,7 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      root_dir = (servers[server_name] or {}).root_dir,
     }
   end
 }
