@@ -251,10 +251,18 @@ require('telescope').setup {
     file_browser = {
       hidden = {
         file_browser = true,
-        folder_browser = true
-      }
-    }
-  }
+        folder_browser = true,
+      },
+    },
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
+    live_grep = {
+      hidden = true,
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
