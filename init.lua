@@ -94,13 +94,12 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'dasupradyumna/midnight.nvim',
+    lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end,
+      vim.cmd.colorscheme 'midnight'
+    end
   },
 
   {
@@ -110,7 +109,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'catppuccin',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
