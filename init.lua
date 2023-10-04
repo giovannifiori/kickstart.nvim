@@ -94,11 +94,10 @@ require('lazy').setup({
   },
 
   {
-    'dasupradyumna/midnight.nvim',
-    lazy = false,
+    'sainnhe/gruvbox-material',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'midnight'
+      vim.cmd.colorscheme 'gruvbox-material'
     end
   },
 
@@ -109,7 +108,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'auto',
+        theme = 'gruvbox-material',
         component_separators = '|',
         section_separators = '',
       },
