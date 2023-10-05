@@ -94,10 +94,11 @@ require('lazy').setup({
   },
 
   {
-    'sainnhe/gruvbox-material',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'gruvbox-material'
+      vim.cmd.colorscheme 'catppuccin-latte'
     end
   },
 
@@ -108,7 +109,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'gruvbox-material',
+        theme = 'catppuccin-latte',
         component_separators = '|',
         section_separators = '',
       },
