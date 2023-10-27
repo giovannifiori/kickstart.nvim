@@ -433,7 +433,17 @@ local servers = {
   tsserver = {
     single_file_support = false,
   },
-  eslint = {},
+  eslint = {
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+      'svelte',
+      'json',
+      'jsonc'
+    },
+  },
   svelte = {},
   denols = {
     root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', 'import_map.json'),

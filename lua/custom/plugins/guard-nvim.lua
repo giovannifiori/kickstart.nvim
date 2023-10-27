@@ -5,7 +5,7 @@ return {
 	},
 	config = function()
 		local ft = require('guard.filetype')
-		ft('typescript,javascript,typescriptreact,javascriptreact'):fmt('prettier') --[[:append({
+		ft('typescript,javascript,typescriptreact,javascriptreact,json'):fmt('prettier') --[[:append({
 			cmd = 'pnpm',
 			args = { 'exec', 'prettier', '--stdin-filepath' },
 			fname = true,
