@@ -4,6 +4,10 @@ vim.g.maplocalleader = ' '
 
 vim.g.copilot_assume_mapped = true
 
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -556,6 +560,8 @@ require('ibl').setup({
     remove_blankline_trail = false
   }
 })
+
+vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<CR>', { desc = '[F]ile [E]xplorer' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
