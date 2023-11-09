@@ -424,10 +424,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  -- if client.name == 'tsserver' then
-  --   local ns = vim.lsp.diagnostic.get_namespace(client.id)
-  --   vim.diagnostic.disable(nil, ns)
-  -- end
+  if client.name == 'tsserver' then
+    local ns = vim.lsp.diagnostic.get_namespace(client.id)
+    vim.diagnostic.disable(nil, ns)
+  end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
