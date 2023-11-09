@@ -4,9 +4,12 @@ vim.g.maplocalleader = ' '
 
 vim.g.copilot_assume_mapped = true
 
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- netrw config
+vim.g.netrw_banner = 0       -- remove banner
+vim.g.netrw_liststyle = 3    -- tree like style
+vim.g.netrw_browse_split = 4 -- open in previous window
+vim.g.netrw_altv = 1         -- open splits to the right
+vim.g.netrw_winsize = 25     -- set width % of netrw window
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
