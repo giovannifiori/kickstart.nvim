@@ -282,6 +282,7 @@ require('telescope').setup {
   },
   extensions = {
     file_browser = {
+      hijack_netrw = true,
       hidden = {
         file_browser = true,
         folder_browser = true,
@@ -600,8 +601,6 @@ require('ibl').setup({
     remove_blankline_trail = false
   }
 })
-
-vim.keymap.set('n', '<leader>fe', ':NvimTreeToggle<CR>', { desc = '[F]ile [E]xplorer' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
