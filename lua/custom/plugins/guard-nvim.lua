@@ -5,12 +5,8 @@ return {
 	},
 	config = function()
 		local ft = require('guard.filetype')
-		ft('typescript,javascript,typescriptreact,javascriptreact,json'):fmt('prettier') --[[:append({
-			cmd = 'pnpm',
-			args = { 'exec', 'prettier', '--stdin-filepath' },
-			fname = true,
-			stdin = true,
-		})]]
+		ft('typescript,javascript,typescriptreact,javascriptreact,json')
+		    :fmt('prettier')
 
 		require('guard').setup({
 			fmt_on_save = true,
