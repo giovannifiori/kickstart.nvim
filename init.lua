@@ -113,12 +113,12 @@ require('lazy').setup({
           return '<Ignore>'
         end, { expr = true })
 
-        map('n', '<leader>hp', gs.preview_hunk)
-        map('n', '<leader>hs', gs.stage_hunk)
-        map('n', '<leader>hu', gs.undo_stage_hunk)
-        map('n', '<leader>hr', gs.reset_hunk)
-        map('n', '<leader>hR', gs.reset_buffer)
-        map('n', '<leader>hb', function() gs.blame_line { full = true } end)
+        map('n', '<leader>hp', gs.preview_hunk, { desc = '[H]unk [P]review' })
+        map('n', '<leader>hs', gs.stage_hunk, { desc = '[H]unk [S]tage' })
+        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = '[H]unk [U]nstage' })
+        map('n', '<leader>hr', gs.reset_hunk, { desc = '[H]unk [R]eset' })
+        map('n', '<leader>hR', gs.reset_buffer, { desc = '[H]unk [R]eset buffer' })
+        map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = '[H]unk [B]lame line' })
       end,
     },
   },
