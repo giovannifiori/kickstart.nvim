@@ -255,7 +255,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>ws', '<C-w>s', { silent = true, desc = '[W]indow [S]plit' })
 vim.keymap.set('n', '<leader>wv', '<C-w>v', { silent = true, desc = '[W]indow [V]ertical split' })
-vim.keymap.set('n', '<leader>wq', '<C-w>q', { silent = true, desc = '[W]indow [Q]uit' })
+vim.keymap.set('n', '<C-x>', '<C-w>q', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
