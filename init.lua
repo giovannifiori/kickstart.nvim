@@ -124,15 +124,6 @@ require('lazy').setup({
   },
 
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -142,6 +133,14 @@ require('lazy').setup({
         theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
+      },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = {},
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
       },
     },
   },
