@@ -3,7 +3,8 @@
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
+vim.o.incsearch = true
 
 -- Make line numbers default
 vim.o.number = true
