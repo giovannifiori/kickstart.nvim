@@ -27,7 +27,8 @@ return {
 			},
 			styles = {
 				comments = { "italic" }
-			}
+			},
+			transparent_background = true,
 		})
 		vim.cmd.colorscheme 'catppuccin-frappe'
 	end
