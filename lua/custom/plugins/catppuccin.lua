@@ -4,8 +4,6 @@ return {
 	priority = 1000,
 	config = function()
 		require('catppuccin').setup({
-			color_overrides = {
-			},
 			integrations = {
 				barbecue = {
 					dim_dirname = true, -- directory name is dimmed by default
