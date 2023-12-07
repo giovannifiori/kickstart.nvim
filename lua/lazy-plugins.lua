@@ -6,9 +6,6 @@
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-  -- Git related plugins
-  'tpope/vim-fugitive',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   'onsails/lspkind.nvim',
