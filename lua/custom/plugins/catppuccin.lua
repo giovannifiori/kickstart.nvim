@@ -20,14 +20,12 @@ return {
 				},
 				telescope = {
 					enabled = true,
-					style = 'nvchad',
 				},
 			},
 			styles = {
 				comments = { "italic" },
-				keywords = { "italic" }
+				keywords = { "italic" },
 			},
-			transparent_background = true,
 		})
 		vim.cmd.colorscheme 'catppuccin-mocha'
 	end
