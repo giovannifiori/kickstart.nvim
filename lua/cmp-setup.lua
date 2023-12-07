@@ -57,4 +57,16 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+}
+
+vim.diagnostic.config {
+  float = {
+    header = false,
+    border = 'rounded',
+    focusable = true,
+  },
 }
