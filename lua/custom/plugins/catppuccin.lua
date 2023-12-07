@@ -24,10 +24,11 @@ return {
 				},
 			},
 			styles = {
-				comments = { "italic" }
+				comments = { "italic" },
+				keywords = { "italic" }
 			},
 			transparent_background = true,
 		})
-		vim.cmd.colorscheme 'catppuccin-frappe'
+		vim.cmd.colorscheme 'catppuccin-mocha'
 	end
 }
