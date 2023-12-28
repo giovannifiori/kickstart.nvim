@@ -1,12 +1,12 @@
 return {
-	"utilyre/barbecue.nvim",
-	name = "barbecue",
-	version = "*",
-	dependencies = {
-		"SmiteshP/nvim-navic",
-		"nvim-tree/nvim-web-devicons",
-	},
-	opts = {
-		theme = "catppuccin-frappe",
-	},
+  'utilyre/barbecue.nvim',
+  name = 'barbecue',
+  version = '*',
+  dependencies = {
+    'SmiteshP/nvim-navic',
+    'nvim-tree/nvim-web-devicons',
+  },
+  opts = {
+    theme = 'catppuccin-frappe',
+  },
 }

@@ -27,8 +27,7 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       {
         'j-hui/fidget.nvim',
-        opts = {
-        },
+        opts = {},
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -54,7 +53,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -78,14 +77,22 @@ require('lazy').setup({
 
         -- Navigation
         map('n', ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
           return '<Ignore>'
         end, { expr = true })
 
         map('n', '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
+          if vim.wo.diff then
+            return '[c'
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
           return '<Ignore>'
         end, { expr = true })
 
@@ -94,7 +101,9 @@ require('lazy').setup({
         map('n', '<leader>hu', gs.undo_stage_hunk, { desc = '[H]unk [U]nstage' })
         map('n', '<leader>hr', gs.reset_hunk, { desc = '[H]unk [R]eset' })
         map('n', '<leader>hR', gs.reset_buffer, { desc = '[H]unk [R]eset buffer' })
-        map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = '[H]unk [B]lame line' })
+        map('n', '<leader>hb', function()
+          gs.blame_line { full = true }
+        end, { desc = '[H]unk [B]lame line' })
       end,
     },
   },
@@ -116,7 +125,7 @@ require('lazy').setup({
         lualine_c = {},
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_z = { 'location' },
       },
     },
   },
@@ -132,8 +141,8 @@ require('lazy').setup({
         char = '┊',
       },
       whitespace = {
-        remove_blankline_trail = false
-      }
+        remove_blankline_trail = false,
+      },
     },
   },
 

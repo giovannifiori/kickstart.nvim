@@ -2,8 +2,27 @@
 -- See `:help nvim-treesitter`
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'go', 'lua', 'python', 'tsx', 'typescript', 'vimdoc', 'vim', 'json',
-      'javascript', 'yaml', 'html', 'css', 'scss', 'dockerfile', 'bash', 'svelte', 'terraform', 'java', 'fish' },
+    ensure_installed = {
+      'go',
+      'lua',
+      'python',
+      'tsx',
+      'typescript',
+      'vimdoc',
+      'vim',
+      'json',
+      'javascript',
+      'yaml',
+      'html',
+      'css',
+      'scss',
+      'dockerfile',
+      'bash',
+      'svelte',
+      'terraform',
+      'java',
+      'fish',
+    },
     -- Autoinstall languages that are not installed
     auto_install = true,
     autotag = {

@@ -68,7 +68,7 @@ local servers = {
       'typescriptreact',
       'svelte',
       'json',
-      'jsonc'
+      'jsonc',
     },
   },
   svelte = {},
@@ -91,7 +91,7 @@ local servers = {
       'typescript',
       'typescriptreact',
       'svelte',
-    }
+    },
   },
   lua_ls = {
     Lua = {
@@ -127,10 +127,10 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
       root_dir = (servers[server_name] or {}).root_dir,
     }
-  end
+  end,
 }
 
 -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded',
 })

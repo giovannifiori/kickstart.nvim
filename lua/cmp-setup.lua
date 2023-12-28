@@ -8,16 +8,16 @@ luasnip.config.setup {}
 
 cmp.setup {
   formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-      })
-    }),
+    format = lspkind.cmp_format {
+      mode = 'symbol_text',
+      menu = {
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        luasnip = '[LuaSnip]',
+        nvim_lua = '[Lua]',
+        latex_symbols = '[Latex]',
+      },
+    },
   },
   snippet = {
     expand = function(args)
@@ -59,7 +59,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'path' }
+    { name = 'path' },
   },
   window = {
     completion = cmp.config.window.bordered(),
