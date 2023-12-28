@@ -134,3 +134,10 @@ mason_lspconfig.setup_handlers {
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = 'rounded',
 })
+
+-- specific to dart
+require('lspconfig').dartls.setup {
+  cmd = { 'dart', 'language-server', '--protocol=lsp' },
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
