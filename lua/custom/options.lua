@@ -30,6 +30,9 @@ vim.wo.signcolumn = 'yes'
 -- highlight current line
 vim.o.cursorline = true
 
+-- lines above/below cursor
+vim.o.scrolloff = 12
+
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
