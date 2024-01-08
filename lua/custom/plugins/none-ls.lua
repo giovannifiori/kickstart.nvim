@@ -39,6 +39,7 @@ return {
         diagnostics.eslint_d,
         diagnostics.golangci_lint,
         formatting.black,
+        formatting.dart_format,
         formatting.gofmt,
         formatting.isort,
         formatting.prettierd,
