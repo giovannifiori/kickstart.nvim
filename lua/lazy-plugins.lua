@@ -115,7 +115,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'github_dark_dimmed',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
