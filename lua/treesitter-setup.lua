@@ -90,5 +90,8 @@ vim.defer_fn(function()
       },
     },
   }
-  require('treesitter-context').setup()
+  require('treesitter-context').setup {
+    enable = true,
+    multiline_threshold = 1,
+  }
 end, 0)
