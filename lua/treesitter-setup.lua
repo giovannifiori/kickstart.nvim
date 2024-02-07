@@ -90,4 +90,5 @@ vim.defer_fn(function()
       },
     },
   }
+  require('treesitter-context').setup()
 end, 0)
