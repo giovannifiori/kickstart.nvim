@@ -64,6 +64,8 @@ vim.defer_fn(function()
           ['al'] = { query = '@loop.outer', desc = 'Select outer part of a loop' },
           ['ib'] = { query = '@block.inner', desc = 'Select inner part of a block' },
           ['ab'] = { query = '@block.outer', desc = 'Select outer part of a block' },
+          ['ii'] = { query = '@conditional.inner', desc = 'Select inner part of a conditional block' },
+          ['ai'] = { query = '@conditional.outer', desc = 'Select outer part of a conditional block' },
         },
       },
       move = {
@@ -84,6 +86,16 @@ vim.defer_fn(function()
         goto_previous_end = {
           ['[M'] = '@function.outer',
           ['[C'] = '@class.outer',
+        },
+        goto_next = {
+          [']i'] = '@conditional.outer',
+          [']l'] = '@loop.outer',
+          [']b'] = '@block.outer',
+        },
+        goto_previous = {
+          ['[i'] = '@conditional.outer',
+          ['[l'] = '@loop.outer',
+          ['[b'] = '@block.outer',
         },
       },
       swap = {
