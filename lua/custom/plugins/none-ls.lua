@@ -37,6 +37,7 @@ return {
         code_actions.gitsigns,
         diagnostics.commitlint,
         diagnostics.eslint_d,
+        diagnostics.flake8,
         diagnostics.golangci_lint,
         formatting.black,
         formatting.dart_format,
