@@ -50,13 +50,20 @@ vim.defer_fn(function()
         enable = true,
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ['aa'] = '@parameter.outer',
-          ['ia'] = '@parameter.inner',
-          ['af'] = '@function.outer',
-          ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
+          ['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter' },
+          ['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter' },
+          ['if'] = { query = '@function.inner', desc = 'Select inner part of a function' },
+          ['af'] = { query = '@function.outer', desc = 'Select outer part of a function' },
+          ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class' },
+          ['ac'] = { query = '@class.outer', desc = 'Select outer part of a class' },
+          ['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of an assignment' },
+          ['r='] = { query = '@assignment.rhs', desc = 'Select right hand side of an assignment' },
+          ['i='] = { query = '@assignment.inner', desc = 'Select inner part of an assignment' },
+          ['a='] = { query = '@assignment.outer', desc = 'Select outer part of an assignment' },
+          ['il'] = { query = '@loop.inner', desc = 'Select inner part of a loop' },
+          ['al'] = { query = '@loop.outer', desc = 'Select outer part of a loop' },
+          ['ib'] = { query = '@block.inner', desc = 'Select inner part of a block' },
+          ['ab'] = { query = '@block.outer', desc = 'Select outer part of a block' },
         },
       },
       move = {
@@ -64,19 +71,19 @@ vim.defer_fn(function()
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
-          [']]'] = '@class.outer',
+          [']c'] = '@class.outer',
         },
         goto_next_end = {
           [']M'] = '@function.outer',
-          [']['] = '@class.outer',
+          [']C'] = '@class.outer',
         },
         goto_previous_start = {
           ['[m'] = '@function.outer',
-          ['[['] = '@class.outer',
+          ['[c'] = '@class.outer',
         },
         goto_previous_end = {
           ['[M'] = '@function.outer',
-          ['[]'] = '@class.outer',
+          ['[C'] = '@class.outer',
         },
       },
       swap = {
@@ -94,4 +101,10 @@ vim.defer_fn(function()
     enable = true,
     multiline_threshold = 1,
   }
+
+  local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+
+  -- vim way: ; goes to the direction you were moving.
+  vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
+  vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
 end, 0)
