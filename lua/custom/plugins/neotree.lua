@@ -11,6 +11,23 @@ return {
     require('neo-tree').setup {
       window = {
         position = 'right',
+        mappings = {
+          ['O'] = {
+            command = function(state)
+              local node = state.tree:get_node()
+              local filepath = node.path
+              local osType = vim.loop.os_uname().sysname
+              local command
+              if osType == 'Darwin' then
+                command = 'open ' .. filepath
+              else
+                command = 'xdg-open ' .. filepath
+              end
+              os.execute(command)
+            end,
+            desc = "[O]pen file with system's default application",
+          },
+        },
       },
     }
 
