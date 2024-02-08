@@ -54,7 +54,6 @@ local servers = {
     },
   },
   pyright = {},
-  pylsp = {},
   cssls = {},
   html = { filetypes = { 'html' } },
   tsserver = {
