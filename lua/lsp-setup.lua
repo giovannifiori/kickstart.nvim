@@ -71,9 +71,6 @@ local servers = {
     },
   },
   svelte = {},
-  denols = {
-    root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc', 'import_map.json'),
-  },
   tailwindcss = {},
   dockerls = {},
   terraformls = {},
