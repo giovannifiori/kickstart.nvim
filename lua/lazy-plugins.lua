@@ -27,7 +27,13 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       {
         'j-hui/fidget.nvim',
-        opts = {},
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -186,4 +192,5 @@ require('lazy').setup({
   },
 
   { import = 'custom.plugins' },
+  { 'xiyaowong/transparent.nvim' },
 }, {})
