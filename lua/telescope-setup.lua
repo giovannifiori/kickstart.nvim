@@ -28,6 +28,9 @@ require('telescope').setup {
         folder_browser = true,
       },
     },
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {},
+    },
   },
   pickers = {
     find_files = {
@@ -43,6 +46,7 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 -- Enable telescope file browser, if installed
 pcall(require('telescope').load_extension, 'file_browser')
+pcall(require('telescope').load_extension, 'ui-select')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
