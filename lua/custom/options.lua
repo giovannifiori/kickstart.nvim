@@ -10,6 +10,8 @@ vim.o.incsearch = true
 vim.o.number = true
 -- Show relative line numbers
 vim.o.relativenumber = true
+-- Hide mode as statusline already shows it
+vim.o.showmode = false
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
