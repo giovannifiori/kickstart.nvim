@@ -3,7 +3,7 @@
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 
 -- Make line numbers default
@@ -43,6 +43,11 @@ vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+-- How new splits open
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+vim.o.inccommand = 'split'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
