@@ -15,6 +15,7 @@ local has_words_before = function()
 end
 
 cmp.setup {
+  completion = { completeopt = 'menu,menuone,noinsert' },
   formatting = {
     format = lspkind.cmp_format {
       mode = 'symbol_text',
@@ -39,24 +40,19 @@ cmp.setup {
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+    -- Accept ([y]es) the completion
+    ['<C-y>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = vim.schedule_wrap(function(fallback)
-      if cmp.visible() and has_words_before() then
-        cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-      else
-        fallback()
+    ['<C-l>'] = cmp.mapping(function()
+      if luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
       end
-    end),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
+    end, { 'i', 's' }),
+    ['<C-h>'] = cmp.mapping(function()
+      if luasnip.expand_or_locally_jumpable(-1) then
+        luasnip.expand_or_jump(-1)
       end
     end, { 'i', 's' }),
   },

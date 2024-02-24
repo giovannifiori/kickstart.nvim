@@ -41,8 +41,6 @@ vim.o.scrolloff = 12
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 -- How new splits open
 vim.o.splitright = true
 vim.o.splitbelow = true
