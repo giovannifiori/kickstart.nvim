@@ -1,52 +1,44 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(client, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('fiori-lsp-attach', { clear = true }),
+  callback = function(event)
+    local nmap = function(keys, func, desc)
+      if desc then
+        desc = 'LSP: ' .. desc
+      end
+
+      vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
     end
 
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
+    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+    nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
-  nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    -- See `:help K` for why this keymap
+    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+    nmap('<C-s>', vim.lsp.buf.signature_help, '[S]ignature Documentation')
 
-  -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('S', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-  -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-end
+    -- Lesser used LSP functionality
+    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  end,
+})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
+--  Add any additional override configuration in the following tables. Available keys are:
+--  - cmd (table): Override the default command used to start the server
+--  - filetypes (table): Override the default list of associated filetypes for the server
+--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+--  - settings (table): Override the default settings passed when initializing the server.
+--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 local servers = {
-  clangd = {},
   gopls = {
     filetypes = {
       'go',
@@ -57,7 +49,9 @@ local servers = {
   cssls = {},
   html = { filetypes = { 'html' } },
   tsserver = {
-    single_file_support = false,
+    settings = {
+      single_file_support = false,
+    },
   },
   eslint = {
     filetypes = {
@@ -90,9 +84,22 @@ local servers = {
     },
   },
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        runtime = { version = 'LuaJIT' },
+        telemetry = { enable = false },
+        workspace = {
+          checkThirdParty = false,
+          -- Tells lua_ls where to find all the Lua files that you have loaded
+          -- for your neovim configuration.
+          library = {
+            '${3rd}/luv/library',
+            unpack(vim.api.nvim_get_runtime_file('', true)),
+          },
+          -- If lua_ls is really slow on your computer, you can try this instead:
+          -- library = { vim.env.VIMRUNTIME },
+        },
+      },
     },
   },
 }
@@ -102,28 +109,25 @@ require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 -- Ensure the servers above are installed
 require('mason').setup()
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
+require('mason-lspconfig').setup {
   ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-      root_dir = (servers[server_name] or {}).root_dir,
-    }
-  end,
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
+      require('lspconfig')[server_name].setup {
+        cmd = server.cmd,
+        settings = server.settings,
+        filetypes = server.filetypes,
+        capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}),
+      }
+    end,
+  },
 }
 
 -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
@@ -135,5 +139,4 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 require('lspconfig').dartls.setup {
   cmd = { 'dart', 'language-server', '--protocol=lsp' },
   capabilities = capabilities,
-  on_attach = on_attach,
 }
