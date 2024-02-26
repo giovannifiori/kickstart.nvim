@@ -66,6 +66,8 @@ vim.defer_fn(function()
           ['ab'] = { query = '@block.outer', desc = 'Select outer part of a block' },
           ['ii'] = { query = '@conditional.inner', desc = 'Select inner part of a conditional block' },
           ['ai'] = { query = '@conditional.outer', desc = 'Select outer part of a conditional block' },
+          ['ir'] = { query = '@return.inner', desc = 'Select inner part of a return statement' },
+          ['ar'] = { query = '@return.outer', desc = 'Select outer part of a return statement' },
         },
       },
       move = {
