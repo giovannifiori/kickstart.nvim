@@ -33,10 +33,8 @@ return {
         end
       end,
       sources = {
-        code_actions.eslint_d,
         code_actions.gitsigns,
         diagnostics.commitlint,
-        diagnostics.eslint_d,
         diagnostics.flake8,
         diagnostics.golangci_lint,
         formatting.black,
