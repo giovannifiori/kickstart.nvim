@@ -21,6 +21,7 @@ require('telescope').setup {
         file_browser = true,
         folder_browser = true,
       },
+      prompt_path = true,
     },
     ['ui-select'] = {
       require('telescope.themes').get_dropdown {},
