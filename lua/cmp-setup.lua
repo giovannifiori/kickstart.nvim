@@ -62,16 +62,11 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'path' },
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
 }
 
 vim.diagnostic.config {
+  virtual_text = false,
   float = {
     header = false,
-    border = 'rounded',
-    focusable = true,
   },
 }
