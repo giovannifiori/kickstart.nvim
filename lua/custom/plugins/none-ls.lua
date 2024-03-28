@@ -35,14 +35,12 @@ return {
       sources = {
         code_actions.gitsigns,
         diagnostics.commitlint,
-        diagnostics.flake8,
         diagnostics.golangci_lint,
         formatting.black,
         formatting.dart_format,
         formatting.gofmt,
         formatting.isort,
         formatting.prettierd,
-        formatting.templ,
         formatting.stylua,
       },
     }
