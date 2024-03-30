@@ -2,8 +2,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.g.copilot_assume_mapped = true
-
 -- netrw config
 vim.g.netrw_banner = 0 -- remove banner
 vim.g.netrw_liststyle = 3 -- tree like style
