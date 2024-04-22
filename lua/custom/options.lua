@@ -33,6 +33,7 @@ vim.o.tabstop = 4
 
 -- highlight current line
 vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'
 
 -- lines above/below cursor
 vim.o.scrolloff = 12
