@@ -4,18 +4,25 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- clear search highlights on Esc
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Incremet/decrement
+vim.keymap.set('n', '+', '<C-a>')
+vim.keymap.set('n', '-', '<C-x>')
+
+-- Select all
+vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
+
 -- Window keymaps
-vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
-vim.keymap.set('n', '<C-x>', '<C-w>q', { silent = true })
+vim.keymap.set('n', '<C-Left>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-Down>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-Up>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-Right>', '<C-w>l', { silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics [Q]uickfix list' })
+
 -- Trouble
 vim.keymap.set('n', '<leader>xx', function()
   require('trouble').toggle()
@@ -32,10 +39,6 @@ end, { desc = 'Trouble [Q]uickfix' })
 vim.keymap.set('n', '<leader>xl', function()
   require('trouble').toggle 'loclist'
 end, { desc = 'Trouble [L]oclist' })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
