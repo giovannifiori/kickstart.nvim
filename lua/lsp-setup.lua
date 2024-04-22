@@ -121,12 +121,8 @@ require('mason-lspconfig').setup {
   handlers = {
     function(server_name)
       local server = servers[server_name] or {}
-      require('lspconfig')[server_name].setup {
-        cmd = server.cmd,
-        settings = server.settings,
-        filetypes = server.filetypes,
-        capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}),
-      }
+      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('lspconfig')[server_name].setup(server)
     end,
   },
 }
