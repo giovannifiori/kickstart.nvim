@@ -4,7 +4,7 @@ return {
     require('arrow').setup {
       show_icons = true,
       leader_key = ';',
-      separate_by_branch = false,
+      separate_by_branch = true,
     }
 
     vim.keymap.set('n', 'H', require('arrow.persist').previous, { desc = 'Arrow previous buffer' })
