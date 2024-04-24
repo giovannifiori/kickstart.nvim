@@ -49,3 +49,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
 })
+
+vim.keymap.set('n', '<leader>rbg', function()
+  local system_bg = 'light'
+  local apple_interface_style = vim.fn.system 'defaults read -g AppleInterfaceStyle'
+  if string.find(apple_interface_style, 'Dark') then
+    system_bg = 'dark'
+  end
+  vim.o.bg = system_bg
+end, { desc = '[R]efresh [b]ack[g]round' })
