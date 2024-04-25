@@ -97,7 +97,11 @@ capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp'
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 -- Ensure the servers above are installed
-require('mason').setup()
+require('mason').setup {
+  ui = {
+    border = 'rounded',
+  },
+}
 require('mason-lspconfig').setup {
   ensure_installed = vim.tbl_keys(servers),
   handlers = {

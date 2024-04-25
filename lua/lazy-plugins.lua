@@ -196,4 +196,8 @@ require('lazy').setup({
   },
 
   { import = 'custom.plugins' },
-}, {})
+}, {
+  ui = {
+    border = 'rounded',
+  },
+})
