@@ -7,5 +7,6 @@ return {
     require('mini.cursorword').setup()
     require('mini.indentscope').setup()
     require('mini.pairs').setup()
+    require('mini.splitjoin').setup()
   end,
 }
