@@ -1,16 +1,23 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local action_layout = require 'telescope.actions.layout'
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = { 'node_modules', '.git/' },
     sorting_strategy = 'ascending',
-    layout_strategy = 'horizontal',
+    layout_strategy = 'vertical',
     layout_config = {
-      horizontal = {
-        prompt_position = 'top',
-      },
       vertical = {
-        mirror = false,
+        prompt_position = 'top',
+        mirror = true,
+      },
+    },
+    mappings = {
+      n = {
+        ['<M-p>'] = action_layout.toggle_preview,
+      },
+      i = {
+        ['<M-p>'] = action_layout.toggle_preview,
       },
     },
   },
