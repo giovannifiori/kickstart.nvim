@@ -11,22 +11,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap('<leader>rn', '<cmd>Lspsaga rename<CR>', '[R]e[n]ame')
+    nmap('<leader>ca', '<cmd>Lspsaga code_action<CR>', '[C]ode [A]ction')
 
-    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    nmap('gd', '<cmd>Lspsaga goto_definition<CR>', '[G]oto [D]efinition')
+    nmap('<leader>pd', '<cmd>Lspsaga peek_definition<CR>', '[P]eek [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap('<leader>pr', '<cmd>Lspsaga finder<CR>', '[P]eek [R]eferences')
     nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
     nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+    nmap('<leader>pD', '<cmd>Lspsaga peek_type_definition<CR>', '[P]eek Type [D]efinition')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
     -- See `:help K` for why this keymap
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<C-s>', vim.lsp.buf.signature_help, '[S]ignature Documentation')
+    nmap('K', '<cmd>Lspsaga hover_doc<CR>', '[H]over Documentation')
 
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    nmap('<leader>do', '<cmd>Lspsaga outline<CR>', '[D]ocument [O]utline')
   end,
 })
 
@@ -118,3 +121,5 @@ require('lspconfig').dartls.setup {
   cmd = { 'dart', 'language-server', '--protocol=lsp' },
   capabilities = capabilities,
 }
+
+require('lspconfig.ui.windows').default_options.border = 'rounded'

@@ -24,7 +24,7 @@ return {
         },
       },
     }
-    vim.keymap.set('n', '<leader>ft', '<cmd>:Neotree reveal right toggle<CR>', { desc = 'Toggle [F]ile [T]ree' })
+    vim.keymap.set('n', '<leader>ft', '<cmd>Neotree reveal right toggle<CR>', { desc = 'Toggle [F]ile [T]ree' })
   end,
   dependencies = {
     'nvim-lua/plenary.nvim',
