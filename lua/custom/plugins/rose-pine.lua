@@ -5,9 +5,6 @@ return {
     require('rose-pine').setup {
       variant = 'auto',
       dark_variant = 'main',
-      styles = {
-        transparency = true,
-      },
     }
 
     local system_bg = 'light'
