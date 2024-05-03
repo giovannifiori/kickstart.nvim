@@ -6,8 +6,6 @@ return {
     -- autoformat
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
-    -- code action sources
-    local code_actions = null_ls.builtins.code_actions
     -- diagnostic sources
     local diagnostics = null_ls.builtins.diagnostics
     -- formatting sources
@@ -33,7 +31,6 @@ return {
         end
       end,
       sources = {
-        code_actions.gitsigns,
         diagnostics.commitlint,
         diagnostics.golangci_lint,
         formatting.black,
