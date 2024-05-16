@@ -18,8 +18,6 @@ vim.keymap.set('n', '<C-Up>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-Right>', '<C-w>l', { silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = 'Show cursor diagnostics' })
 vim.keymap.set('n', '<leader>le', '<cmd>Lspsaga show_line_diagnostics<CR>', { desc = 'Show line diagnostics' })
 vim.keymap.set('n', '<leader>be', '<cmd>Lspsaga show_buf_diagnostics ++normal<CR>', { desc = 'Show buffer diagnostics' })
