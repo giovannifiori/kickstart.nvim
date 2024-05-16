@@ -27,6 +27,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     nmap('<leader>do', '<cmd>Lspsaga outline<CR>', '[D]ocument [O]utline')
+
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+      vim.lsp.inlay_hint.enable(true)
+    end
   end,
 })
 
